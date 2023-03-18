@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 내 해답
+            // main idea : 길이가 1 이하가 될 때 까지 string의 맨 앞과 뒤를 확인
+            // 양 끝이 다르다면 NO 같다면 잘라서 그 안쪽을 계속 체크해 나감
+
+            function solution(s){
+                let answer;
+
+                function check(string){
+                    const len = string.length
+                    // 재귀 종료 조건
+                    if(len <= 1){
+                        return 'YES'
+                    }                
+
+                    let result;
+                    const front = string[0].toUpperCase();
+                    const back = string[len - 1].toUpperCase();
+
+                    if(front === back){
+                        result = check(string.slice(1, len-1))
+                    }else{
+                        result = 'NO'
+                    }
+
+                    // 재귀함수에서 리턴한 값을 받아서 내보냄
+                    return result
+                }
+
+                answer = check(s)
+
+                return answer;
+            }
+            
+            // 강의 해답 02
+            // 말 그대로 문자열을 뒤집었을 때(reverse) 동일한지 확인하는 방법
+            // 문자열을 배열로 만든 뒤 reverse 메서드를 사용
+
+            function solution(s){
+                let answer = "YES";
+
+                s=s.toLowerCase();
+                if(s.split('').reverse().join('') !== s) return 'NO';
+
+                return answer;
+            }
+
+            console.log(solution("S1rsfR1s"));
+            console.log(solution("goooG"));
+            console.log(solution("abcdefDcba"));
+
+        </script>
+    </body>
+</html>
