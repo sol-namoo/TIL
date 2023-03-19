@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 내 해답
+            // 알파벳만 걸러내려면 정규식이 필요하지 않을까
+            // a-z인 것만 골라내서 확인
+
+            function solution(s){
+                let answer = 'YES'
+            
+                if(s.toLowerCase().match(/[a-z]/g).join('') !== s.toLowerCase().match(/[a-z]/g).reverse().join('')) return 'NO'
+
+                return answer;
+            }
+            
+
+            // 강의 해답
+            //  정규식을 쓰기는 하지만 a-z가 아닌 것을 ''으로 바꾸는 것이 차이
+
+            function solution(s){
+                let answer = 'YES'
+            
+                if(s.toLowerCase().replace(/[^a-z]/g, '').join('') !== s.toLowerCase().match(/[a-z]/g).reverse().join('')) return 'NO'
+
+                return answer;
+            }
+    
+            console.log(solution("found7, time: study; Yduts; emit, 7Dnuof"));
+            console.log(solution('anavolimilana'))
+            console.log(solution('k; amy ! m:ak'))
+        </script>
+    </body>
+</html>
